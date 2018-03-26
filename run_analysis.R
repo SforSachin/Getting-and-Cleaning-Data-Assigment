@@ -68,4 +68,4 @@ all_data <- cbind(x_data, y_data, subject_data)
 # 66 <- 68 columns but last two (activity & subject)
 averages_data <- all_data %>% group_by(subject, activity) %>% summarize_all(funs(mean))
 
-write.table(averages_data, "averages_data.txt", row.name=FALSE)
+write.table(averages_data, "tidy_data.txt", row.name=FALSE)
