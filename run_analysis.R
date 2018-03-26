@@ -1,4 +1,4 @@
-library(plyr)
+library(dplyr)
 
 setwd("C:/Coursera/R Programming/Course3Project/UCI HAR Dataset")
 
@@ -66,6 +66,6 @@ all_data <- cbind(x_data, y_data, subject_data)
 ###############################################################################
 
 # 66 <- 68 columns but last two (activity & subject)
-averages_data <- ddply(all_data, .(subject, activity), function(x) colMeans(x[, 1:66]))
+averages_data <- all_data %>% group_by(subject, activity) %>% summarize_all(funs(mean))
 
 write.table(averages_data, "averages_data.txt", row.name=FALSE)
